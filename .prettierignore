@@ -1,0 +1,10 @@
+.github/
+
+# editor configs
+.idea/
+.vscode/
+
+coverage/
+
+package.json
+tmp/
