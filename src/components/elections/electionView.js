@@ -6,6 +6,7 @@ import ErrorMessage from '../../layout/errorMessage'
 import { CategoriesList } from '../category/categoriesList'
 import { SubcategoriesList } from '../subcategory/subcategoriesList'
 import { ELECTION_QUERY } from '../../utils/quaries'
+import { formatTime } from '../../utils/time'
 
 
 export function ElectionView({ match }) {
@@ -23,8 +24,8 @@ export function ElectionView({ match }) {
           <Grid.Column>
             <Header as='h1'>
               {title}
-              <Header.Subheader>StartAt: {startAt}</Header.Subheader>
-              <Header.Subheader>EndAt: {endAt}</Header.Subheader>
+              <Header.Subheader>StartAt: {formatTime(startAt)}</Header.Subheader>
+              <Header.Subheader>EndAt: {formatTime(endAt)}</Header.Subheader>
               <Header.Subheader>isOpen: {isOpen.toString()}</Header.Subheader>
               <Header.Subheader>isStrict: {isStrict.toString()}</Header.Subheader>
             </Header>

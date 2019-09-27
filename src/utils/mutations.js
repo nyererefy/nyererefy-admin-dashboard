@@ -8,6 +8,14 @@ export const ADD_CATEGORY = gql`
 }
 `
 
+export const ADD_ELECTION = gql`
+  mutation($input: ElectionInput!) {
+  createElection(input: $input) {
+    id
+  }
+}
+`
+
 export const GENERATE_SUBCATEGORIES = gql`
   mutation($electionId: Int!) {
   generateSubcategories(electionId: $electionId) {

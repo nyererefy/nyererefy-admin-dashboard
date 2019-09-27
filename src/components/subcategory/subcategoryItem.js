@@ -11,7 +11,7 @@ export function SubcategoryItem({ subcategory }) {
           {subcategory.title}
         </List.Header>
         <List.Description>
-          Eligible: {subcategory.suffix}
+          Eligible: {subcategory.suffix} students
         </List.Description>
       </List.Content>
     </List.Item>

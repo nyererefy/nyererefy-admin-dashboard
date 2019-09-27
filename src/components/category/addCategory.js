@@ -8,10 +8,10 @@ import { CATEGORIES_QUERY } from '../../utils/quaries'
 const options = [
   { key: 'a', text: 'All', value: 'ALL' },
   { key: 'b', text: 'Branch', value: 'BRANCH' },
-  { key: 's', text: 'School', value: 'SCHOOL' },
+  { key: 's', text: 'School/Faculty', value: 'SCHOOL' },
+  { key: 'p', text: 'Program', value: 'PROGRAM' },
   { key: 'c', text: 'Class', value: 'CLASS' },
   { key: 'r', text: 'Residence', value: 'RESIDENCE' },
-  { key: 'p', text: 'Program', value: 'PROGRAM' },
 ]
 
 export function AddCategory({ electionId }) {
@@ -28,7 +28,6 @@ export function AddCategory({ electionId }) {
         loading={loading}
         onSubmit={(e) => {
           e.preventDefault()
-          console.log('eligible', eligible)
 
           mutate({
             variables: {
