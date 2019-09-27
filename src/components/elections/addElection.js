@@ -57,13 +57,12 @@ export function AddElection() {
               readOnly
             />
 
-            {showStartAtInput ?
-              <InputMoment
-                moment={startAt}
-                onChange={t => setStartAt(t)}
-                minStep={1}
-                onSave={() => setShowStartAtInput(false)}
-              /> : null}
+            {showStartAtInput && <InputMoment
+              moment={startAt}
+              onChange={t => setStartAt(t)}
+              minStep={1}
+              onSave={() => setShowStartAtInput(false)}
+            />}
 
             <Form.Input
               label="End Time"
@@ -72,13 +71,12 @@ export function AddElection() {
               readOnly
             />
 
-            {showEndAtInput ?
-              <InputMoment
-                moment={endAt}
-                onChange={t => setEndAt(t)}
-                minStep={1}
-                onSave={() => setShowEndAtInput(false)}
-              /> : null}
+            {showEndAtInput && <InputMoment
+              moment={endAt}
+              onChange={t => setEndAt(t)}
+              minStep={1}
+              onSave={() => setShowEndAtInput(false)}
+            />}
 
             <Form.Button content='Submit'/>
           </Form>
