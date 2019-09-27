@@ -1,19 +1,11 @@
 import React from 'react'
 import { ElectionItem } from './electionItem'
 import { List } from 'semantic-ui-react'
-import gql from 'graphql-tag'
 import { Query } from 'react-apollo'
 import { ProgressBar } from '../../layout/progressBar'
 import ErrorMessage from '../../layout/errorMessage'
+import { ELECTIONS_QUERY } from '../../utils/quaries'
 
-const ELECTIONS_QUERY = gql`
-  {
-    elections {
-      id
-      title
-    }
-  }
-`
 
 export const ElectionsList = () => (
   <Query query={ELECTIONS_QUERY}>
