@@ -75,7 +75,7 @@ export const CLASSES_QUERY = gql`
 
 export const PROGRAMS_QUERY = gql`
 {
-  programs {
+  programs(filter: false) {
     id
     title
   }

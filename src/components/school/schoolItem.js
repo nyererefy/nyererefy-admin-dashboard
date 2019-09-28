@@ -1,6 +1,7 @@
 import React from 'react'
-import { Button, List } from 'semantic-ui-react'
+import { List } from 'semantic-ui-react'
 import { ProgramsList } from '../program/programsList'
+import { RegisterProgram } from '../program/registerProgram'
 
 export function SchoolItem({ school }) {
   const { id, title, schoolPrograms } = school
@@ -8,7 +9,7 @@ export function SchoolItem({ school }) {
   return (
     <List.Item key={id}>
       <List.Content floated='right'>
-        <Button size="tiny" icon='plus square outline'/>
+        <RegisterProgram school={school}/>
       </List.Content>
 
       <List.Content>

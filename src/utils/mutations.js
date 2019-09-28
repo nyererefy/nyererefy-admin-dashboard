@@ -30,6 +30,13 @@ mutation($input: SchoolInput!) {
   }
 }
 `
+export const REGISTER_PROGRAM = gql`
+mutation($input: SchoolProgramInput!) {
+  registerProgram(input: $input) {
+    id
+  }
+}
+`
 
 export const GENERATE_SUBCATEGORIES = gql`
   mutation($electionId: Int!) {
