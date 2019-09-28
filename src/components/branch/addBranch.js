@@ -1,50 +1,71 @@
 import React, { useState } from 'react'
 import 'input-moment/dist/input-moment.css'
-import { Form } from 'semantic-ui-react'
+import { Button, Form, Modal } from 'semantic-ui-react'
 import { Mutation } from 'react-apollo'
-import { ADD_ELECTION } from '../../utils/mutations'
+import { ADD_BRANCH } from '../../utils/mutations'
 import ErrorMessage from '../../layout/errorMessage'
-import { ELECTIONS_QUERY } from '../../utils/quaries'
+import { BRANCHES_QUERY } from '../../utils/quaries'
 
 
 export function AddBranch() {
   const [title, setTitle] = useState('')
+  const [abbreviation, setAbbreviation] = useState('')
+  const [showModel, setShowModel] = useState(false)
 
-  return <Mutation mutation={ADD_ELECTION}
-                   refetchQueries={[{ query: ELECTIONS_QUERY }]}>
-    {(mutate, { loading, data, error }) => {
-      if (error) return <ErrorMessage message={error.message}/>
-      if (data) setTitle('')
+  return <Modal
+    trigger={<Button content="Add" onClick={() => setShowModel(true)} fluid/>}
+    open={showModel}
+    onClose={() => setShowModel(false)}
+    closeIcon>
+    <Modal.Header>Add Branch</Modal.Header>
+    <Modal.Content>
+      <Mutation mutation={ADD_BRANCH} refetchQueries={[{ query: BRANCHES_QUERY }]}>
+        {(mutate, { loading, data, error }) => {
+          if (error) return <ErrorMessage message={error.message}/>
+          if (data) {
+            setTitle('')
+            setAbbreviation('')
+            setShowModel(false)
+          }
 
-      return (
-        <div>
-          <Form
-            loading={loading}
-            onSubmit={(e) => {
-              e.preventDefault()
+          return (
+            <div>
+              <Form
+                loading={loading}
+                onSubmit={e => {
+                  e.preventDefault()
 
-              mutate({
-                variables: {
-                  input: {
-                    title,
-                  },
-                },
-              })
-            }}>
-            <Form.Group>
-              <Form.Input
-                name="title"
-                value={title}
-                placeholder='Enter Branch title'
-                onChange={e => setTitle(e.target.value)}
-              />
+                  mutate({
+                    variables: {
+                      input: {
+                        title,
+                        abbreviation,
+                      },
+                    },
+                  })
+                }}>
+                <Form.Input
+                  label="Branch Title"
+                  name="title"
+                  value={title}
+                  placeholder='Eg Mwanza Branch'
+                  onChange={e => setTitle(e.target.value)}
+                />
+                <Form.Input
+                  label="Branch Abbreviation"
+                  name="abbreviation"
+                  value={abbreviation}
+                  placeholder='Eg MB'
+                  onChange={e => setAbbreviation(e.target.value)}
+                />
 
-              <Form.Button content='Add'/>
-            </Form.Group>
-          </Form>
-        </div>
-      )
-    }}
-  </Mutation>
+                <Form.Button content='Submit'/>
+              </Form>
+            </div>
+          )
+        }}
+      </Mutation>
+    </Modal.Content>
+  </Modal>
 }
 

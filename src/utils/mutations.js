@@ -15,6 +15,13 @@ export const ADD_ELECTION = gql`
   }
 }
 `
+export const ADD_BRANCH = gql`
+mutation($input: BranchInput!) {
+  createBranch(input: $input) {
+    id
+  }
+}
+`
 
 export const GENERATE_SUBCATEGORIES = gql`
   mutation($electionId: Int!) {
