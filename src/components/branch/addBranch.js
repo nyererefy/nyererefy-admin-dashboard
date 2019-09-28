@@ -50,6 +50,7 @@ export function AddBranch() {
                   value={title}
                   placeholder='Eg Mwanza Branch'
                   onChange={e => setTitle(e.target.value)}
+                  required
                 />
                 <Form.Input
                   label="Branch Abbreviation"

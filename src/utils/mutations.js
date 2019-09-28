@@ -23,6 +23,14 @@ mutation($input: BranchInput!) {
 }
 `
 
+export const CREATE_SCHOOL = gql`
+mutation($input: SchoolInput!) {
+  createSchool(input: $input) {
+    id
+  }
+}
+`
+
 export const GENERATE_SUBCATEGORIES = gql`
   mutation($electionId: Int!) {
   generateSubcategories(electionId: $electionId) {
