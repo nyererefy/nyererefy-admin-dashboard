@@ -14,16 +14,19 @@ export function CategoriesList({ electionId }) {
       if (loading) return <ProgressBar/>
       if (error) return <ErrorMessage message={error.message}/>
 
+      const { categories } = data
+
       return (
         <div>
-          {/*todo add category form here*/}
           <h2>Categories</h2>
           <AddCategory electionId={electionId}/>
+          {categories &&
           <List divided verticalAlign='middle' size="huge">
             {
-              data.categories.map(c => <CategoryItem category={c}/>)
+              categories.map(c => <CategoryItem category={c}/>)
             }
           </List>
+          }
         </div>
       )
     }}

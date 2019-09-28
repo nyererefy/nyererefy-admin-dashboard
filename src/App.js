@@ -58,7 +58,6 @@ const App = () => (
           <Route path="/" exact component={DashboardView}/>
           <Route path="/elections" component={ElectionsList}/>
           <Route path="/election/:id" component={ElectionView}/>
-          <Route path="/schools" component={SchoolsList}/>
         </Container>
       </BrowserRouter>
     </div>

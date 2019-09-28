@@ -14,17 +14,23 @@ export const ElectionsList = () => (
       if (loading) return <ProgressBar/>
       if (error) return <ErrorMessage message={error.message}/>
 
+      const { elections } = data
+
       return (
         <Grid columns='equal'>
           <Grid.Row>
             <Grid.Column>
               <Header as="h2">Elections</Header>
-
-              <List divided verticalAlign='middle' size="huge">
-                {
-                  data.elections.map(e => <ElectionItem election={e}/>)
-                }
-              </List>
+              {elections ?
+                <List divided verticalAlign='middle' size="huge">
+                  {
+                    elections.map(e => <ElectionItem election={e}/>)
+                  }
+                </List> :
+                <div>
+                  <h2>No elections found</h2>
+                </div>
+              }
             </Grid.Column>
 
             <Grid.Column>

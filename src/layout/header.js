@@ -23,10 +23,6 @@ export default class Header extends Component {
                      name='elections'
                      active={activeItem === 'elections'}
                      onClick={this.handleItemClick}/>
-          <Menu.Item as={Link} to="/schools"
-                     name='schools'
-                     active={activeItem === 'schools'}
-                     onClick={this.handleItemClick}/>
           <Menu.Item as={Link} to="/logout"
                      position='right'
                      name='logout'

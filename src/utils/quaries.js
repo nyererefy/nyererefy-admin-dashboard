@@ -39,3 +39,45 @@ query($electionId: Int!) {
   }
 }
 `
+
+export const BRANCHES_QUERY = gql`
+ {
+  branches {
+    id
+    title
+  }
+}
+`
+
+export const SCHOOLS_QUERY = gql`
+{
+  schools {
+    id
+    title
+    schoolPrograms {
+      program {
+        id
+        title
+      }
+    }
+  }
+}
+`
+
+export const CLASSES_QUERY = gql`
+ {
+  classes {
+    id
+    title
+  }
+}
+`
+
+export const PROGRAMS_QUERY = gql`
+{
+  programs {
+    id
+    title
+  }
+}
+`
