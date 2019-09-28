@@ -45,3 +45,11 @@ export const GENERATE_SUBCATEGORIES = gql`
   }
 }
 `
+
+export const GENERATE_CLASSES = gql`
+mutation {
+  generateClasses {
+    id
+  }
+}
+`
