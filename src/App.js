@@ -6,7 +6,6 @@ import { Container } from 'semantic-ui-react'
 import { BrowserRouter, Route } from 'react-router-dom'
 import { DashboardView } from './components/dashboard/dashboardView'
 import { ElectionView } from './components/elections/electionView'
-import { SchoolsList } from './components/school/schoolsList'
 import { HttpLink } from 'apollo-link-http'
 import { WebSocketLink } from 'apollo-link-ws'
 import { getMainDefinition } from 'apollo-utilities'
@@ -14,6 +13,7 @@ import { split } from 'apollo-link'
 import ApolloClient from 'apollo-client'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import { ApolloProvider } from 'react-apollo'
+import { SubcategoriesView } from './components/subcategory/subcategoriesView'
 
 // Create an http link:
 const httpLink = new HttpLink({
@@ -58,6 +58,7 @@ const App = () => (
           <Route path="/" exact component={DashboardView}/>
           <Route path="/elections" component={ElectionsList}/>
           <Route path="/election/:id" component={ElectionView}/>
+          <Route path="/subcategory/:id" component={SubcategoriesView}/>
         </Container>
       </BrowserRouter>
     </div>

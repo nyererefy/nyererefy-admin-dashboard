@@ -40,6 +40,23 @@ query($electionId: Int!) {
 }
 `
 
+export const SUBCATEGORY_QUERY = gql`
+query($subcategoryId: Int!) {
+  subcategory(id: $subcategoryId) {
+    id
+    title
+    candidates {
+      id
+      avatar
+      user {
+        name
+        regNo
+      }
+    }
+  }
+}
+`
+
 export const BRANCHES_QUERY = gql`
  {
   branches {
@@ -78,6 +95,16 @@ export const PROGRAMS_QUERY = gql`
   programs(filter: false) {
     id
     title
+  }
+}
+`
+
+export const SEARCH_STUDENT_QUERY = gql`
+query($query: String) {
+  users(query: $query) {
+    id
+    regNo
+    name
   }
 }
 `

@@ -53,3 +53,11 @@ mutation {
   }
 }
 `
+
+export const CREATE_CANDIDATE = gql`
+mutation($input: CandidateInput!) {
+  createCandidate(input: $input) {
+    id
+  }
+}
+`
