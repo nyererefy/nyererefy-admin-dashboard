@@ -7,29 +7,30 @@ import { ClassItem } from './classItem'
 import { GenerateClasses } from './generateClasses'
 import { CLASSES_QUERY } from '../../utils/quaries'
 
-
 export function ClassesList() {
-  return <Query query={CLASSES_QUERY}>
-    {({ loading, data, error }) => {
-      if (loading) return <ProgressBar/>
-      if (error) return <ErrorMessage message={error.message}/>
+  return (
+    <Query query={CLASSES_QUERY}>
+      {({ loading, data, error }) => {
+        if (loading) return <ProgressBar />
+        if (error) return <ErrorMessage message={error.message} />
 
-      const { classes } = data
+        const { classes } = data
 
-      return (
-        <div>
-          <Header as="h2">Classes</Header>
+        return (
+          <div>
+            <Header as='h2'>Classes</Header>
 
-          <GenerateClasses electionId={1}/>
-          {classes &&
-          <List celled>
-            {
-              classes.map(c => <ClassItem klass={c}/>)
-            }
-          </List>
-          }
-        </div>
-      )
-    }}
-  </Query>
+            <GenerateClasses electionId={1} />
+            {classes && (
+              <List celled>
+                {classes.map((c) => (
+                  <ClassItem klass={c} />
+                ))}
+              </List>
+            )}
+          </div>
+        )
+      }}
+    </Query>
+  )
 }

@@ -9,7 +9,6 @@ import { ELECTIONS_QUERY } from '../../utils/quaries'
 import moment from 'moment'
 import { formatTime } from '../../utils/time'
 
-
 export function AddElection() {
   const [title, setTitle] = useState('')
   const [startAt, setStartAt] = useState(moment().add(24, 'hours'))
@@ -17,72 +16,77 @@ export function AddElection() {
   const [showStartAtInput, setShowStartAtInput] = useState(false)
   const [showEndAtInput, setShowEndAtInput] = useState(false)
 
-  return <Mutation mutation={ADD_ELECTION}
-                   refetchQueries={[{ query: ELECTIONS_QUERY }]}>
-    {(mutate, { loading, data, error }) => {
-      if (error) return <ErrorMessage message={error.message}/>
-      if (data) setTitle('')
+  return (
+    <Mutation mutation={ADD_ELECTION} refetchQueries={[{ query: ELECTIONS_QUERY }]}>
+      {(mutate, { loading, data, error }) => {
+        if (error) return <ErrorMessage message={error.message} />
+        if (data) setTitle('')
 
-      return (
-        <div>
-          <Header as="h2">Create Election</Header>
+        return (
+          <div>
+            <Header as='h2'>Create Election</Header>
 
-          <Form
-            loading={loading}
-            onSubmit={(e) => {
-              e.preventDefault()
+            <Form
+              loading={loading}
+              onSubmit={(e) => {
+                e.preventDefault()
 
-              mutate({
-                variables: {
-                  input: {
-                    title,
-                    startAt,
-                    endAt,
+                mutate({
+                  variables: {
+                    input: {
+                      title,
+                      startAt,
+                      endAt,
+                    },
                   },
-                },
-              })
-            }}>
-            <Form.Input
-              label="Election Title"
-              name="title"
-              value={title}
-              placeholder='Enter Title of election here...'
-              onChange={e => setTitle(e.target.value)}
-            />
+                })
+              }}
+            >
+              <Form.Input
+                label='Election Title'
+                name='title'
+                value={title}
+                placeholder='Enter Title of election here...'
+                onChange={(e) => setTitle(e.target.value)}
+              />
 
-            <Form.Input
-              label="Start Time"
-              value={formatTime(startAt)}
-              onFocus={() => setShowStartAtInput(true)}
-              readOnly
-            />
+              <Form.Input
+                label='Start Time'
+                value={formatTime(startAt)}
+                onFocus={() => setShowStartAtInput(true)}
+                readOnly
+              />
 
-            {showStartAtInput && <InputMoment
-              moment={startAt}
-              onChange={t => setStartAt(t)}
-              minStep={1}
-              onSave={() => setShowStartAtInput(false)}
-            />}
+              {showStartAtInput && (
+                <InputMoment
+                  moment={startAt}
+                  onChange={(t) => setStartAt(t)}
+                  minStep={1}
+                  onSave={() => setShowStartAtInput(false)}
+                />
+              )}
 
-            <Form.Input
-              label="End Time"
-              value={formatTime(endAt)}
-              onFocus={() => setShowEndAtInput(true)}
-              readOnly
-            />
+              <Form.Input
+                label='End Time'
+                value={formatTime(endAt)}
+                onFocus={() => setShowEndAtInput(true)}
+                readOnly
+              />
 
-            {showEndAtInput && <InputMoment
-              moment={endAt}
-              onChange={t => setEndAt(t)}
-              minStep={1}
-              onSave={() => setShowEndAtInput(false)}
-            />}
+              {showEndAtInput && (
+                <InputMoment
+                  moment={endAt}
+                  onChange={(t) => setEndAt(t)}
+                  minStep={1}
+                  onSave={() => setShowEndAtInput(false)}
+                />
+              )}
 
-            <Form.Button content='Submit'/>
-          </Form>
-        </div>
-      )
-    }}
-  </Mutation>
+              <Form.Button content='Submit' />
+            </Form>
+          </div>
+        )
+      }}
+    </Mutation>
+  )
 }
-

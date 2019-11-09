@@ -18,48 +18,54 @@ export function AddCategory({ electionId }) {
   const [title, setTitle] = useState('')
   const [eligible, setEligible] = useState('')
 
-  return <Mutation mutation={ADD_CATEGORY}
-                   refetchQueries={[{ query: CATEGORIES_QUERY, variables: { electionId } }]}>
-    {(mutate, { loading, data, error }) => {
-      if (error) return <ErrorMessage message={error.message}/>
-      if (data) setTitle('')
+  return (
+    <Mutation
+      mutation={ADD_CATEGORY}
+      refetchQueries={[{ query: CATEGORIES_QUERY, variables: { electionId } }]}
+    >
+      {(mutate, { loading, data, error }) => {
+        if (error) return <ErrorMessage message={error.message} />
+        if (data) setTitle('')
 
-      return <Form
-        loading={loading}
-        onSubmit={(e) => {
-          e.preventDefault()
+        return (
+          <Form
+            loading={loading}
+            onSubmit={(e) => {
+              e.preventDefault()
 
-          mutate({
-            variables: {
-              input: {
-                title,
-                eligible,
-                electionId,
-              },
-            },
-          })
-        }}>
-        <Form.Group>
-          <Form.Input
-            name="title"
-            value={title}
-            placeholder='Title'
-            onChange={e => setTitle(e.target.value)}
-          />
-          <Form.Field
-            name="eligible"
-            value={eligible}
-            control={Select}
-            options={options}
-            placeholder='Select Eligibility'
-            onChange={(e, data) => {
-              setEligible(data.value)
+              mutate({
+                variables: {
+                  input: {
+                    title,
+                    eligible,
+                    electionId,
+                  },
+                },
+              })
             }}
-          />
-          <Form.Button content='Add'/>
-        </Form.Group>
-      </Form>
-    }}
-  </Mutation>
+          >
+            <Form.Group>
+              <Form.Input
+                name='title'
+                value={title}
+                placeholder='Title'
+                onChange={(e) => setTitle(e.target.value)}
+              />
+              <Form.Field
+                name='eligible'
+                value={eligible}
+                control={Select}
+                options={options}
+                placeholder='Select Eligibility'
+                onChange={(e, data) => {
+                  setEligible(data.value)
+                }}
+              />
+              <Form.Button content='Add' />
+            </Form.Group>
+          </Form>
+        )
+      }}
+    </Mutation>
+  )
 }
-

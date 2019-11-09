@@ -11,66 +11,72 @@ export function AddCandidate({ subcategoryId }) {
   const [userId, setUserId] = useState('')
   const [searchQuery, setSearchQuery] = useState(null)
 
-  return <Mutation mutation={CREATE_CANDIDATE}
-                   refetchQueries={[{ query: SUBCATEGORY_QUERY, variables: { subcategoryId } }]}>
-    {(mutate, { loading, data, error }) => {
-      if (error) return <ErrorMessage message={error.message}/>
-      if (data) {
-        setUserId('')
-      }
+  return (
+    <Mutation
+      mutation={CREATE_CANDIDATE}
+      refetchQueries={[{ query: SUBCATEGORY_QUERY, variables: { subcategoryId } }]}
+    >
+      {(mutate, { loading, data, error }) => {
+        if (error) return <ErrorMessage message={error.message} />
+        if (data) {
+          setUserId('')
+        }
 
-      return (
-        <div>
-          <Form
-            loading={loading}
-            onSubmit={e => {
-              e.preventDefault()
+        return (
+          <div>
+            <Form
+              loading={loading}
+              onSubmit={(e) => {
+                e.preventDefault()
 
-              mutate({
-                variables: {
-                  input: {
-                    userId: parseInt(userId),
-                    subcategoryId,
+                mutate({
+                  variables: {
+                    input: {
+                      userId: parseInt(userId),
+                      subcategoryId,
+                    },
                   },
-                },
-              })
-            }}>
-
-            <Query query={SEARCH_STUDENT_QUERY} variables={{ query: searchQuery }}>
-              {({ loading, data, error }) => {
-                if (error) return <ErrorMessage message={error.message}/>
-                if (loading) return <ProgressBar/>
-
-                const options = data.users.map(u => {
-                  return {
-                    key: u.id,
-                    text: `${u.name || ''} #${u.regNo}`,
-                    value: u.id,
-                  }
                 })
-
-                // todo this does not work well
-                return <Dropdown
-                  clearable
-                  fluid
-                  onChange={(e, { value }) => setUserId(value)}
-                  onSearchChange={(e, { searchQuery }) => setSearchQuery(searchQuery)}
-                  selection
-                  search
-                  value={userId}
-                  options={options}
-                  placeholder='Search Student'
-                  loading={loading}
-                />
               }}
-            </Query>
+            >
+              <Query query={SEARCH_STUDENT_QUERY} variables={{ query: searchQuery }}>
+                {({ loading, data, error }) => {
+                  if (error) return <ErrorMessage message={error.message} />
+                  if (loading) return <ProgressBar />
 
-            <Divider/>
+                  const options = data.users.map((u) => {
+                    return {
+                      key: u.id,
+                      text: `${u.name || ''} #${u.regNo}`,
+                      value: u.id,
+                    }
+                  })
 
-            <Form.Button content='Submit'/>
-          </Form>
-        </div>
-      )
-    }}
-  </Mutation>
+                  // todo this does not work well
+                  return (
+                    <Dropdown
+                      clearable
+                      fluid
+                      onChange={(e, { value }) => setUserId(value)}
+                      onSearchChange={(e, { searchQuery }) => setSearchQuery(searchQuery)}
+                      selection
+                      search
+                      value={userId}
+                      options={options}
+                      placeholder='Search Student'
+                      loading={loading}
+                    />
+                  )
+                }}
+              </Query>
+
+              <Divider />
+
+              <Form.Button content='Submit' />
+            </Form>
+          </div>
+        )
+      }}
+    </Mutation>
+  )
 }

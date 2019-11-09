@@ -6,9 +6,7 @@ export function CategoryItem({ category }) {
   return (
     <List.Item key={category.id}>
       <List.Content>
-        <List.Header>
-          {category.title}
-        </List.Header>
+        <List.Header>{category.title}</List.Header>
       </List.Content>
     </List.Item>
   )

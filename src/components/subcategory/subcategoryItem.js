@@ -10,9 +10,7 @@ export function SubcategoryItem({ subcategory }) {
         <List.Header as={Link} to={`/subcategory/${subcategory.id}`}>
           {subcategory.title}
         </List.Header>
-        <List.Description>
-          Eligible: {subcategory.suffix} students
-        </List.Description>
+        <List.Description>Eligible: {subcategory.suffix} students</List.Description>
       </List.Content>
     </List.Item>
   )

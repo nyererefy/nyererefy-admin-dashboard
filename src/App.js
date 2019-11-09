@@ -35,10 +35,7 @@ const link = split(
   // split based on operation type
   ({ query }) => {
     const definition = getMainDefinition(query)
-    return (
-      definition.kind === 'OperationDefinition' &&
-      definition.operation === 'subscription'
-    )
+    return definition.kind === 'OperationDefinition' && definition.operation === 'subscription'
   },
   wsLink,
   httpLink,
@@ -51,14 +48,14 @@ const client = new ApolloClient({
 
 const App = () => (
   <ApolloProvider client={client}>
-    <div className="App">
+    <div className='App'>
       <BrowserRouter>
-        <Header/>
+        <Header />
         <Container>
-          <Route path="/" exact component={DashboardView}/>
-          <Route path="/elections" component={ElectionsList}/>
-          <Route path="/election/:id" component={ElectionView}/>
-          <Route path="/subcategory/:id" component={SubcategoriesView}/>
+          <Route path='/' exact component={DashboardView} />
+          <Route path='/elections' component={ElectionsList} />
+          <Route path='/election/:id' component={ElectionView} />
+          <Route path='/subcategory/:id' component={SubcategoriesView} />
         </Container>
       </BrowserRouter>
     </div>

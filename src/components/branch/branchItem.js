@@ -5,9 +5,7 @@ export function BranchItem({ election }) {
   return (
     <List.Item key={election.id}>
       <List.Content>
-        <List.Header>
-          {election.title}
-        </List.Header>
+        <List.Header>{election.title}</List.Header>
       </List.Content>
     </List.Item>
   )

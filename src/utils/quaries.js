@@ -10,101 +10,101 @@ export const ELECTIONS_QUERY = gql`
 `
 
 export const ELECTION_QUERY = gql`
-query($id: Int!) {
-  election(id: $id) {
-    title
-    isOpen
-    isStrict
-    startAt
-    endAt
+  query($id: Int!) {
+    election(id: $id) {
+      title
+      isOpen
+      isStrict
+      startAt
+      endAt
+    }
   }
-}
 `
 
 export const CATEGORIES_QUERY = gql`
-query($electionId: Int!) {
-  categories(electionId: $electionId) {
-    id
-    title
+  query($electionId: Int!) {
+    categories(electionId: $electionId) {
+      id
+      title
+    }
   }
-}
 `
 
 export const SUBCATEGORIES_QUERY = gql`
-query($electionId: Int!) {
-  subcategories(electionId: $electionId) {
-    id
-    title
-    suffix
+  query($electionId: Int!) {
+    subcategories(electionId: $electionId) {
+      id
+      title
+      suffix
+    }
   }
-}
 `
 
 export const SUBCATEGORY_QUERY = gql`
-query($subcategoryId: Int!) {
-  subcategory(id: $subcategoryId) {
-    id
-    title
-    candidates {
+  query($subcategoryId: Int!) {
+    subcategory(id: $subcategoryId) {
       id
-      avatar
-      user {
-        name
-        regNo
+      title
+      candidates {
+        id
+        avatar
+        user {
+          name
+          regNo
+        }
       }
     }
   }
-}
 `
 
 export const BRANCHES_QUERY = gql`
- {
-  branches {
-    id
-    title
+  {
+    branches {
+      id
+      title
+    }
   }
-}
 `
 
 export const SCHOOLS_QUERY = gql`
-{
-  schools {
-    id
-    title
-    schoolPrograms {
-      program {
-        id
-        title
+  {
+    schools {
+      id
+      title
+      schoolPrograms {
+        program {
+          id
+          title
+        }
       }
     }
   }
-}
 `
 
 export const CLASSES_QUERY = gql`
- {
-  classes {
-    id
-    title
+  {
+    classes {
+      id
+      title
+    }
   }
-}
 `
 
 export const PROGRAMS_QUERY = gql`
-{
-  programs(filter: false) {
-    id
-    title
+  {
+    programs(filter: false) {
+      id
+      title
+    }
   }
-}
 `
 
 export const SEARCH_STUDENT_QUERY = gql`
-query($query: String) {
-  users(query: $query) {
-    id
-    regNo
-    name
+  query($query: String) {
+    users(query: $query) {
+      id
+      regNo
+      name
+    }
   }
-}
 `

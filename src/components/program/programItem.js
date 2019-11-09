@@ -8,9 +8,7 @@ export function ProgramItem({ program }) {
     <List.Item key={id}>
       <List.Icon name='caret right' />
       <List.Content>
-        <List.Header>
-          {title}
-        </List.Header>
+        <List.Header>{title}</List.Header>
       </List.Content>
     </List.Item>
   )

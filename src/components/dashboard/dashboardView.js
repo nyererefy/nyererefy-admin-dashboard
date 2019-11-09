@@ -5,29 +5,29 @@ import { SchoolsList } from '../school/schoolsList'
 import { ClassesList } from '../class/classesList'
 
 export function DashboardView() {
-  return <Grid columns='equal'>
-    <Grid.Row>
-      <Grid.Column>
-        <Segment>
-          stats
-        </Segment>
-      </Grid.Column>
-    </Grid.Row>
+  return (
+    <Grid columns='equal'>
+      <Grid.Row>
+        <Grid.Column>
+          <Segment>stats</Segment>
+        </Grid.Column>
+      </Grid.Row>
 
-    <Divider/>
+      <Divider />
 
-    <Grid.Row>
-      <Grid.Column>
-        <BranchesList/>
-      </Grid.Column>
+      <Grid.Row>
+        <Grid.Column>
+          <BranchesList />
+        </Grid.Column>
 
-      <Grid.Column>
-        <SchoolsList/>
-      </Grid.Column>
+        <Grid.Column>
+          <SchoolsList />
+        </Grid.Column>
 
-      <Grid.Column>
-        <ClassesList/>
-      </Grid.Column>
-    </Grid.Row>
-  </Grid>
+        <Grid.Column>
+          <ClassesList />
+        </Grid.Column>
+      </Grid.Row>
+    </Grid>
+  )
 }

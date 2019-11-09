@@ -9,15 +9,13 @@ export function SchoolItem({ school }) {
   return (
     <List.Item key={id}>
       <List.Content floated='right'>
-        <RegisterProgram school={school}/>
+        <RegisterProgram school={school} />
       </List.Content>
 
       <List.Content>
-        <List.Header>
-          {title}
-        </List.Header>
+        <List.Header>{title}</List.Header>
         <List.Description>Registered Programs:</List.Description>
-        <ProgramsList programs={schoolPrograms}/>
+        <ProgramsList programs={schoolPrograms} />
       </List.Content>
     </List.Item>
   )

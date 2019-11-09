@@ -7,27 +7,26 @@ import ErrorMessage from '../../layout/errorMessage'
 import { BRANCHES_QUERY } from '../../utils/quaries'
 import { AddBranch } from './addBranch'
 
-
 export const BranchesList = () => (
   <Query query={BRANCHES_QUERY}>
     {({ loading, data, error }) => {
-      if (loading) return <ProgressBar/>
-      if (error) return <ErrorMessage message={error.message}/>
+      if (loading) return <ProgressBar />
+      if (error) return <ErrorMessage message={error.message} />
 
       const { branches } = data
       return (
         <div>
-          <Header as="h2">Branches</Header>
+          <Header as='h2'>Branches</Header>
 
-          <AddBranch/>
+          <AddBranch />
 
-          {branches &&
-          <List divided verticalAlign='middle'>
-            {
-              branches.map(b => <BranchItem election={b}/>)
-            }
-          </List>
-          }
+          {branches && (
+            <List divided verticalAlign='middle'>
+              {branches.map((b) => (
+                <BranchItem election={b} />
+              ))}
+            </List>
+          )}
         </div>
       )
     }}
