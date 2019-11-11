@@ -14,11 +14,14 @@ import ApolloClient from 'apollo-client'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import { ApolloProvider } from 'react-apollo'
 import { SubcategoriesView } from './components/subcategory/subcategoriesView'
+import Logout from './components/auth/logout'
+import Login from './components/auth/login'
+import SignUp from './components/auth/signUp'
 
 // Create an http link:
 const httpLink = new HttpLink({
   uri: 'http://localhost:2000/graphql',
-  credentials: 'same-origin',
+  credentials: 'include',
 })
 
 // Create a WebSocket link:
@@ -50,12 +53,15 @@ const App = () => (
   <ApolloProvider client={client}>
     <div className='App'>
       <BrowserRouter>
-        <Header />
+        <Header/>
         <Container>
-          <Route path='/' exact component={DashboardView} />
-          <Route path='/elections' component={ElectionsList} />
-          <Route path='/election/:id' component={ElectionView} />
-          <Route path='/subcategory/:id' component={SubcategoriesView} />
+          <Route path='/' exact component={DashboardView}/>
+          <Route path='/elections' component={ElectionsList}/>
+          <Route path='/election/:id' component={ElectionView}/>
+          <Route path='/subcategory/:id' component={SubcategoriesView}/>
+          <Route path='/login' component={Login}/>
+          <Route path='/signup' component={SignUp}/>
+          <Route path='/logout' component={Logout}/>
         </Container>
       </BrowserRouter>
     </div>

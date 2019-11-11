@@ -61,3 +61,29 @@ export const CREATE_CANDIDATE = gql`
     }
   }
 `
+
+export const LOGIN = gql`
+mutation($input: LoginInput!) {
+  login(input: $input) {
+    ... on Manager {
+      id
+      name
+    }
+  }
+}
+`;
+
+export const SIGN_UP = gql`
+mutation($input: ManagerSocialSignUpInput!) {
+  registerManager(input: $input) {
+    id
+    name
+  }
+}
+`;
+
+export const LOGOUT = gql`
+  mutation {
+    logout
+  }
+`;
