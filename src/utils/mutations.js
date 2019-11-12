@@ -87,3 +87,11 @@ export const LOGOUT = gql`
     logout
   }
 `;
+
+export const CREATE_UNIVERSITY = gql`
+mutation($input: UniversityInput!) {
+  createUniversity(input: $input) {
+    id
+  }
+}
+`;

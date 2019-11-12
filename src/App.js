@@ -17,6 +17,7 @@ import { SubcategoriesView } from './components/subcategory/subcategoriesView'
 import Logout from './components/auth/logout'
 import Login from './components/auth/login'
 import SignUp from './components/auth/signUp'
+import { UniversityView } from './components/university/universityView'
 
 // Create an http link:
 const httpLink = new HttpLink({
@@ -55,7 +56,8 @@ const App = () => (
       <BrowserRouter>
         <Header/>
         <Container>
-          <Route path='/' exact component={DashboardView}/>
+          <Route path='/' exact component={UniversityView}/>
+          <Route path='/dashboard' component={DashboardView}/>
           <Route path='/elections' component={ElectionsList}/>
           <Route path='/election/:id' component={ElectionView}/>
           <Route path='/subcategory/:id' component={SubcategoriesView}/>

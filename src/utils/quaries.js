@@ -1,12 +1,12 @@
 import gql from 'graphql-tag'
 
 export const ELECTIONS_QUERY = gql`
-  {
-    elections {
-      id
-      title
-    }
+{
+  elections(strict: true) {
+    id
+    title
   }
+}
 `
 
 export const ELECTION_QUERY = gql`
@@ -107,4 +107,18 @@ export const SEARCH_STUDENT_QUERY = gql`
       name
     }
   }
+`
+
+export const CURRENT_MANAGER_QUERY = gql`
+{
+  currentManager {
+    name
+    university {
+      abbreviation
+      title
+      uuid
+      secret
+    }
+  }
+}
 `

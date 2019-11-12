@@ -3,7 +3,7 @@ import { Menu, Segment } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
 export default class Header extends Component {
-  state = { activeItem: 'dashboard' }
+  state = { activeItem: 'university' }
 
   handleItemClick = (e, { name }) => {
     this.setState({ activeItem: name })
@@ -18,6 +18,13 @@ export default class Header extends Component {
           <Menu.Item
             as={Link}
             to='/'
+            name='university'
+            active={activeItem === 'university'}
+            onClick={this.handleItemClick}
+          />
+          <Menu.Item
+            as={Link}
+            to='/dashboard'
             name='dashboard'
             active={activeItem === 'dashboard'}
             onClick={this.handleItemClick}
