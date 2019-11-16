@@ -4,7 +4,8 @@ import { Form, Header, Select } from 'semantic-ui-react'
 import { Mutation } from 'react-apollo'
 import { CREATE_UNIVERSITY } from '../../utils/mutations'
 import ErrorMessage from '../../layout/errorMessage'
-import { CURRENT_MANAGER_QUERY } from '../../utils/quaries'
+import { BRANCHES_QUERY, CURRENT_MANAGER_QUERY } from '../../utils/quaries'
+import { Redirect } from 'react-router-dom'
 
 const months = [
   { key: 1, text: 'January', value: 1 },
@@ -31,9 +32,10 @@ export function RegisterUniversity() {
 
   return (
     <Mutation mutation={CREATE_UNIVERSITY}
-              refetchQueries={[{ query: CURRENT_MANAGER_QUERY }]}>
-      {(mutate, { loading, error }) => {
+              refetchQueries={[{ query: CURRENT_MANAGER_QUERY }, { query: BRANCHES_QUERY }]}>
+      {(mutate, { loading, data, error }) => {
         if (error) return <ErrorMessage message={error.message}/>
+        if (data) return <Redirect to="/"/>
 
         return (
           <div>

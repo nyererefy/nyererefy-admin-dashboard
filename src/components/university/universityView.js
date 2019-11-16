@@ -1,7 +1,7 @@
 import React from 'react'
 import { Query } from 'react-apollo'
 import { ProgressBar } from '../../layout/progressBar'
-import { Grid, Header } from 'semantic-ui-react'
+import { Divider, Grid, Header } from 'semantic-ui-react'
 import ErrorMessage from '../../layout/errorMessage'
 import { CURRENT_MANAGER_QUERY } from '../../utils/quaries'
 import { RegisterUniversity } from './registerUniversity'
@@ -20,7 +20,7 @@ export function UniversityView() {
           return <RegisterUniversity/>
         }
 
-        const { title, abbreviation } = university
+        const { title, abbreviation, uuid, secret } = university
 
         return (
           <Grid columns='equal'>
@@ -28,7 +28,16 @@ export function UniversityView() {
               <Grid.Column>
                 <Header as='h1'>
                   {title}
-                  <Header.Subheader>StartAt: {abbreviation}</Header.Subheader>
+                  <Header.Subheader> {abbreviation}</Header.Subheader>
+                </Header>
+                <Divider/>
+                <Header as='h5'>
+                  uuid
+                  <Header.Subheader> {uuid}</Header.Subheader>
+                </Header>
+                <Header as='h5'>
+                  secret
+                  <Header.Subheader> {secret}</Header.Subheader>
                 </Header>
               </Grid.Column>
             </Grid.Row>
