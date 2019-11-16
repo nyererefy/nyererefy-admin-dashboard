@@ -10,7 +10,7 @@ export const ProgramsList = ({ school }) => {
     <div>
       <List divided verticalAlign='middle'>
         {schoolPrograms.map((p) => (
-          <ProgramItem program={p.program} schoolProgramId={p.id}/>
+          <ProgramItem program={p.program} schoolProgramId={p.id} identifier={p.identifier}/>
         ))}
       </List>
     </div>

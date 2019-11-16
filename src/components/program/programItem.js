@@ -3,7 +3,7 @@ import { Button, List } from 'semantic-ui-react'
 import { EditProgram } from './editProgram'
 import { DeleteProgram } from './deleteProgram'
 
-export function ProgramItem({ program, schoolProgramId }) {
+export function ProgramItem({ program, schoolProgramId, identifier }) {
   const { id, title } = program
 
   return (
@@ -17,6 +17,7 @@ export function ProgramItem({ program, schoolProgramId }) {
       <List.Icon name='caret right'/>
       <List.Content>
         <List.Header>{title}</List.Header>
+        <List.Description>Identifier: <b>{identifier}</b></List.Description>
       </List.Content>
     </List.Item>
   )

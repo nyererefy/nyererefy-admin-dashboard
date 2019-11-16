@@ -67,19 +67,20 @@ export const BRANCHES_QUERY = gql`
 `
 
 export const SCHOOLS_QUERY = gql`
-  {
-    schools {
+{
+  schools {
+    id
+    title
+    schoolPrograms {
       id
-      title
-      schoolPrograms {
+      identifier
+      program {
         id
-        program {
-          id
-          title
-        }
+        title
       }
     }
   }
+}
 `
 
 export const CLASSES_QUERY = gql`
