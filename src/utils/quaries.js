@@ -72,6 +72,7 @@ export const SCHOOLS_QUERY = gql`
       id
       title
       schoolPrograms {
+        id
         program {
           id
           title

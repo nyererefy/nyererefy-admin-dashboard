@@ -103,3 +103,11 @@ mutation($input: ResidenceInput!) {
   }
 }
 `;
+
+export const DELETE_SCHOOL_PROGRAM = gql`
+mutation($id: Int!) {
+  deleteSchoolProgram(id: $id) {
+    id
+  }
+}
+`;
