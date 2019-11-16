@@ -122,3 +122,12 @@ export const CURRENT_MANAGER_QUERY = gql`
   }
 }
 `
+
+export const RESIDENCES_QUERY = gql`
+{
+  residences {
+    id
+    title
+  }
+}
+`

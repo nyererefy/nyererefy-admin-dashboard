@@ -95,3 +95,11 @@ mutation($input: UniversityInput!) {
   }
 }
 `;
+
+export const CREATE_RESIDENCE = gql`
+mutation($input: ResidenceInput!) {
+  createResidence(input: $input) {
+    id
+  }
+}
+`;

@@ -3,6 +3,7 @@ import { Divider, Grid, Segment } from 'semantic-ui-react'
 import { BranchesList } from '../branch/branchesList'
 import { SchoolsList } from '../school/schoolsList'
 import { ClassesList } from '../class/classesList'
+import { ResidencesList } from '../residence/residencesList'
 
 export function DashboardView() {
   return (
@@ -26,6 +27,10 @@ export function DashboardView() {
 
         <Grid.Column>
           <ClassesList />
+        </Grid.Column>
+
+        <Grid.Column>
+          <ResidencesList />
         </Grid.Column>
       </Grid.Row>
     </Grid>
