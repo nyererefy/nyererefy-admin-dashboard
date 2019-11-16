@@ -9,13 +9,13 @@ import { ProgressBar } from '../../layout/progressBar'
 
 export function AddSchool() {
   const [title, setTitle] = useState('')
-  const [abbreviation, setAbbreviation] = useState('')
+  const [abbreviation, setAbbreviation] = useState(null)
   const [branchId, setBranchId] = useState(null)
   const [showModel, setShowModel] = useState(false)
 
   return (
     <Modal
-      trigger={<Button content='Add' onClick={() => setShowModel(true)} fluid />}
+      trigger={<Button content='Add' onClick={() => setShowModel(true)} fluid/>}
       open={showModel}
       onClose={() => setShowModel(false)}
       closeIcon
@@ -24,7 +24,7 @@ export function AddSchool() {
       <Modal.Content>
         <Mutation mutation={CREATE_SCHOOL} refetchQueries={[{ query: SCHOOLS_QUERY }]}>
           {(mutate, { loading, data, error }) => {
-            if (error) return <ErrorMessage message={error.message} />
+            if (error) return <ErrorMessage message={error.message}/>
             if (data) {
               setTitle('')
               setAbbreviation('')
@@ -67,8 +67,8 @@ export function AddSchool() {
 
                   <Query query={BRANCHES_QUERY}>
                     {({ loading, data, error }) => {
-                      if (loading) return <ProgressBar />
-                      if (error) return <ErrorMessage message={error.message} />
+                      if (loading) return <ProgressBar/>
+                      if (error) return <ErrorMessage message={error.message}/>
 
                       const options = data.branches.map((b) => {
                         return {
@@ -92,7 +92,7 @@ export function AddSchool() {
                     }}
                   </Query>
 
-                  <Form.Button content='Submit' />
+                  <Form.Button content='Submit'/>
                 </Form>
               </div>
             )
