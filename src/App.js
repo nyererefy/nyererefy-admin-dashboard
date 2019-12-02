@@ -19,15 +19,26 @@ import Login from './components/auth/login'
 import SignUp from './components/auth/signUp'
 import { UniversityView } from './components/university/universityView'
 
+let BASE_URL = ''
+let WS_BASE_URL = ''
+
+if (process.env.NODE_ENV === 'production') {
+  BASE_URL = 'https://nyererefy.com/graphql'
+  WS_BASE_URL = 'wss://nyererefy.com/graphql'
+} else {
+  BASE_URL = 'http://localhost:2000/graphql'
+  WS_BASE_URL = 'ws://localhost:2000/graphql'
+}
+
 // Create an http link:
 const httpLink = new HttpLink({
-  uri: 'http://localhost:2000/graphql',
+  uri: BASE_URL,
   credentials: 'include',
 })
 
 // Create a WebSocket link:
 const wsLink = new WebSocketLink({
-  uri: `ws://localhost:2000/graphql`,
+  uri: WS_BASE_URL,
   options: {
     reconnect: true,
   },
