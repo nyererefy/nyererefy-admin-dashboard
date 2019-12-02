@@ -56,14 +56,14 @@ const App = () => (
       <BrowserRouter>
         <Header/>
         <Container>
-          <Route path='/' exact component={UniversityView}/>
-          <Route path='/dashboard' component={DashboardView}/>
-          <Route path='/elections' component={ElectionsList}/>
-          <Route path='/election/:id' component={ElectionView}/>
-          <Route path='/subcategory/:id' component={SubcategoriesView}/>
-          <Route path='/login' component={Login}/>
-          <Route path='/signup' component={SignUp}/>
-          <Route path='/logout' component={Logout}/>
+          <Route path='/manage/' exact component={UniversityView}/>
+          <Route path='/manage/dashboard' component={DashboardView}/>
+          <Route path='/manage/elections' component={ElectionsList}/>
+          <Route path='/manage/election/:id' component={ElectionView}/>
+          <Route path='/manage/subcategory/:id' component={SubcategoriesView}/>
+          <Route path='/manage/login' component={Login}/>
+          <Route path='/manage/signup' component={SignUp}/>
+          <Route path='/manage/logout' component={Logout}/>
         </Container>
       </BrowserRouter>
     </div>

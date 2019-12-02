@@ -15,7 +15,7 @@ function Logout() {
 
         if (data) {
           localStorage.removeItem(M_DATA);
-          return <Redirect to="/login" />;
+          return <Redirect to="/manage/login" />;
         } else {
           mutate();
         }

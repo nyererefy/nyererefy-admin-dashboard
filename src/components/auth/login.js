@@ -22,7 +22,7 @@ function Login() {
           }
 
           localStorage.setItem(M_DATA, JSON.stringify(studentData))
-          return <Redirect to="/"/>
+          return <Redirect to="/manage"/>
         }
 
         return (
@@ -52,7 +52,7 @@ function Login() {
                 />
               </Form>
               <Message>
-                Don't have account? <Link to='/signup'>Register now</Link>
+                Don't have account? <Link to='/manage/signup'>Register now</Link>
               </Message>
             </Grid.Column>
           </Grid>

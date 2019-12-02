@@ -23,7 +23,7 @@ function SignUp() {
           }
 
           localStorage.setItem(M_DATA, JSON.stringify(studentData))
-          return <Redirect to="/"/>
+          return <Redirect to="/manage"/>
         }
 
         return (
@@ -61,7 +61,7 @@ function SignUp() {
                 />
               </Form>
               <Message>
-                Already registered? <Link to='/login'>Login now</Link>
+                Already registered? <Link to='/manage/login'>Login now</Link>
               </Message>
             </Grid.Column>
           </Grid>

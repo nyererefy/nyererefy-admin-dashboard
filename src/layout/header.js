@@ -17,28 +17,28 @@ export default class Header extends Component {
         <Menu inverted pointing secondary>
           <Menu.Item
             as={Link}
-            to='/'
+            to='/manage/'
             name='university'
             active={activeItem === 'university'}
             onClick={this.handleItemClick}
           />
           <Menu.Item
             as={Link}
-            to='/dashboard'
+            to='/manage/dashboard'
             name='dashboard'
             active={activeItem === 'dashboard'}
             onClick={this.handleItemClick}
           />
           <Menu.Item
             as={Link}
-            to='/elections'
+            to='/manage/elections'
             name='elections'
             active={activeItem === 'elections'}
             onClick={this.handleItemClick}
           />
           <Menu.Item
             as={Link}
-            to='/logout'
+            to='/manage/logout'
             position='right'
             name='logout'
             active={activeItem === 'logout'}
